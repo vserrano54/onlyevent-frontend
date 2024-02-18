@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/login.css">
+
+    <title>Login</title>
+</head>
+<body>
+    <input type="text" id="pagina" value="login">
+ 
+    <div class="fondo_login">
+        <div class="imagen">
+            <img src="img/logo.png" alt="">
+        </div>
+        <div class="titulo">
+            Iniciar Sesión - OnlyEvent
+        </div>
+
+        <form class="login col-12">
+           
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                <p class="error" id="erroremail"></p>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <div class="box-eye">
+                    <button type="button" id="btnMostrar">
+                        <i id="eyepassword" class="fa-solid fa-eye changepassword"></i>
+                    </button>
+
+                </div>
+                <input type="password" name="password" class="form-control" id="password">
+                <p class="error" id="errorpassword"></p>
+            </div>
+          
+            <div class="d-grid gap-2">
+                <button type="button" class="boton" id="btnLogin" >Iniciar Sesión</button>
+            </div>
+          </form>
+          <div class="login col-12 mt-2">
+            <a class="mx-2" href="signup.html">Crete una cuenta</a> <a href="recuperarpass.html">Recuperar contraseña</a>
+          </div>
+            
+
+    </div>
+    
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/7f7949013d.js" crossorigin="anonymous"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>
