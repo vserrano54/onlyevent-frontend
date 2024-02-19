@@ -17,8 +17,14 @@ const divempresa = document.getElementById('empresa');
 let bandera = false;
 const rdbUsuario = document.getElementById('rdbUsuario');
 
+let chkCondicionUso = document.getElementById('checkCondicion');
+const infocondicion = document.getElementById('infocondicion');
+
+
 const rdbPromotor = document.getElementById('rdbPromotor');
 let checkUsuario =  document.querySelector('input[name="rdbUsuario"]:checked');
+
+
 
 /*
 switch (pagina) {
@@ -173,8 +179,18 @@ function validarPassword(pass){
 
         if (!contieneCaracteresEspeciales(pass)){
             error.push('Debe de tener al menos un caracter <br> especial [., !, @, #, $, %, &]');
-        }       
+        }   
+        
+      
         return error; 
+}
+
+function validarCondicionUso(chk){
+    let error = [];
+    if (!chk.checked){
+        error.push('Debe aceptar las condiciones de uso');
+    }
+    return error;
 }
 
 function imprimirError(errores, campo){
@@ -200,16 +216,20 @@ function validarCampos() {
     if (nomempresa != null){
         imprimirError(validarCampoEmpresa(nomempresa),errornomempresa);
     }
+
+    imprimirError(validarCondicionUso(chkCondicionUso),infocondicion);
 }
 
 function validarFormulario() {
   
 
     email = document.getElementById('email');
-    console.log('campo correo dentro funcion validar formulario: '+email);
+  
 
     inputPassword = document.getElementById('password');
     console.log('Password: '+inputPassword.value);
+
+    chkCondicionUso = document.getElementById('checkCondicion');
     bandera = true;
     validarCampos();
 }
@@ -262,6 +282,13 @@ if (btnMostrar2){
     });
 }
 
+/*
+chkCondicionUso.addEventListener('click', function() {
+
+    //
+  })
+  */
+
 btnLogin.addEventListener('click', validarFormulario);
 
 if (bandera){
@@ -272,3 +299,4 @@ if (bandera){
     }
 
 }
+

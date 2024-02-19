@@ -191,6 +191,6 @@ btnLogin.addEventListener('click', validarFormulario);
 
 if (bandera){
     email.addEventListener('input',  imprimirError(validarCampoCorreo(email), erroremail));
-    inputPassword.addEventListener('input', imprimirError(validarCampoCorreo(inputPassword), errorpassword));
+    inputPassword.addEventListener('input', imprimirError(validarPassword(inputPassword), errorpassword));
 
 }
