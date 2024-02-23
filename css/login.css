@@ -60,6 +60,7 @@ a{
 }
 a:hover{
     color:blue;
+    text-decoration: underline;
 }
 
 .imagen, .titulo{
@@ -104,4 +105,42 @@ img{
 }
 #empresa{
     display: none;
+}
+   
+.hide--accessibility {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: #000;
+}
+
+
+/*
+.tooltip{
+    font-weight:normal;
+}
+*/
+
+.tooltip:hover{
+    text-decoration: underline;
+    position: relative;
+}
+
+.tooltip-box{
+    position: absolute;
+    background: #000;
+    line-height: 20px;
+    z-index:500;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    left: 0;
+
+
 }

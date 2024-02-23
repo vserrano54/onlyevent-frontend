@@ -1,4 +1,4 @@
-const pagina = document.getElementById('pagina').value;
+//const pagina = document.getElementById('pagina').value;
 const btneye = document.getElementById('eyepassword');
 const btnMostrar = document.getElementById('btnMostrar');
 const btnLogin = document.getElementById('btnLogin');
@@ -8,8 +8,13 @@ const icon = document.getElementById('eyepassword');
 let erroremail = document.getElementById('erroremail');
 let errorpassword = document.getElementById('errorpassword');
 
+let usuario = 'admin@gmail.com'
+let clave = 'Admin.123!'
+
+
 
 let bandera = false;
+let validar = true;
 
 
 /*
@@ -68,7 +73,7 @@ function validarCampoCorreo(correo){
         error.push('El correo es requerido');
     }
     if (!esCorreoValido(correo.value.trim())) {
-        error.push('Ingrese un correo valido');
+        error.push('Ingrese un correo valido <br> con formato nombre@ejemplo.com');
     }
     return error;
 
@@ -108,48 +113,94 @@ function contieneCaracteresEspeciales(pass) {
     return regex.test(pass.value);
 }
 
+function existeUsuarioPasswor(user, pass){
+    console.log('Entra a la funcion existeUsuarioPasswor ');
+    console.log('Usuario: '+ user.value);
+    console.log('Password: '+pass.value);
+    if (user.value === usuario && pass.value === clave ){
+        console.log(user.value);
+        console.log(pass.value === clave );
+        console.log('valor regresado de existeUsuarioPasswor true');
+        return true;
+    }
+    console.log('valor regresado de existeUsuarioPasswor falso');
+    return false;
+}
+
+function validarUsuarioPasswor(user,pass){
+    
+    let error = [];
+    
+    if (pass.value.trim() === ''){
+        error.push('La contraseña es requerida');
+        validar=false
+    }
+    if (existeUsuarioPasswor(user,pass)===false) {
+        error.push('El usuario o password no existe');
+        validar=false;
+        
+    }
+    return error;
+}
+
 function validarPassword(pass){
   
     let error = [];
-    
+    validar=true;
         if (pass.value.trim() === ''){
             error.push('La contraseña es requerida');
+            validar=false
         }
 
         if (pass.value.trim().length < 8){
             error.push('Debe de tener un minimo de 8 caracteres');
+            validar=false
         }
       
         if (!contieneLetras(pass)){
             error.push('Debe de tener letras');
+            validar=false
         }
 
         if (!contieneLetrasMinusculas(pass)){
             error.push('Debe de tener al menos una letra Minúscula');
+            validar=false
         }
 
         if (!contieneLetrasMayusculas(pass)){
             error.push('Debe de tener al menos una letra Mayúscula');
+            validar=false
         }
         
         if (!contieneNumeros(pass)){
             error.push('Debe de tener al menos un número');
+            validar=false
         }
 
         if (!contieneCaracteresEspeciales(pass)){
             error.push('Debe de tener al menos un caracter <br> especial [., !, @, #, $, %, &]');
-        }       
+            validar=false
+        }  
+        
+        
         return error; 
 }
 
 function imprimirError(errores, campo){
 
-    if (errores.length > 0){
-        campo.innerHTML=errores[0];
+    if (errores != undefined){
+        console.log(errores);
+        if (errores.length > 0){
+            campo.innerHTML=errores[0];
+        }
+        else{
+            campo.innerHTML='';
+        } 
     }
     else{
         campo.innerHTML='';
-    } 
+    }
+    
 }
 
 function validarCampos() {
@@ -157,6 +208,7 @@ function validarCampos() {
    
     imprimirError(validarCampoCorreo(email), erroremail);
     imprimirError(validarPassword(inputPassword), errorpassword);
+    imprimirError(validarUsuarioPasswor(email,inputPassword),errorpassword);
     
 }
 
@@ -168,6 +220,11 @@ function validarFormulario() {
     inputPassword = document.getElementById('password');
     bandera = true;
     validarCampos();
+
+    if (validar == true){
+        window.location.href = "eventosReservados.html";
+    }
+    console.log('validar: ' + validar);
 }
 
 function limpiarErrores(){
