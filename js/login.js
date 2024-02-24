@@ -222,7 +222,7 @@ function validarFormulario() {
     validarCampos();
 
     if (validar == true){
-        window.location.href = "eventosReservados.html";
+        window.location.href = "vistaEventos.html";
     }
     console.log('validar: ' + validar);
 }
