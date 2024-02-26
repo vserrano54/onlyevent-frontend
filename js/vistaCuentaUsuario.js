@@ -65,9 +65,16 @@ document.addEventListener('DOMContentLoaded', ()=> {
             console.error('Hay un error en la petición', err);
         });
 
-    
     document.getElementById('botonModificarDatos').addEventListener('click', () => {
         
         console.log('Se ha hecho clic en el botón "Modificar datos"');
     });
+
+    document.getElementById('botonModificarPass').addEventListener('click', () => {
+        
+        window.location.href = "modificarpass.html";
+    });
+    
+
+
 });
