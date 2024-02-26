@@ -1,4 +1,4 @@
-const pagina = document.getElementById('pagina').value;
+
 const btneye = document.getElementById('eyepassword');
 const btnMostrar = document.getElementById('btnMostrar');
 const btnMostrar2 = document.getElementById('btnMostrar2');
